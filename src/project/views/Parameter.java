@@ -7,15 +7,17 @@ import java.awt.event.MouseEvent;
 import project.App;
 
 public class Parameter {
-    private JButton button1;
-    public JPanel jpanel;
+    private JButton mm1Button;
+    public JPanel jPanel;
+    private JButton mmkButton;
+    private JButton mm1kButton;
 
     public Parameter() {
-        button1.addMouseListener(new MouseAdapter() {
+        mm1Button.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-                App.goToQueue();
+                App.goToQueue(App.QueueType.MM1);
             }
         });
     }
