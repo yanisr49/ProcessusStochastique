@@ -3,24 +3,21 @@ package project;
 import project.views.*;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class App {
 
-    public enum QueueType { MM1, MMK, MM1K};
-
-    private static JFrame frame = new JFrame("test");
+    private static JFrame frame = new JFrame("Processus Stochastique");
 
     public static void main(String[] args) {
 
-        frame.setContentPane(new Parameter().jPanel);
+        frame.setContentPane(new Queue().mainJPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.pack();
-        frame.setVisible(true);
+        frame.setResizable(false);
+        refreshJFrame();
     }
 
-    public static void goToQueue(QueueType type) {
-        frame.setContentPane(new Queue().jpanel);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    public static void refreshJFrame() {
         frame.pack();
         frame.setVisible(true);
     }
