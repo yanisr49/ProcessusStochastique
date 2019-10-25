@@ -254,11 +254,11 @@ public class Queue {
         }
         try {
             if(procStach.Wq() != -1 && !(procStach.Wq() != procStach.Wq()))
-                wqJLabel.setText("L_q : " + String.valueOf(procStach.Wq()));
+                wqJLabel.setText("W_q : " + String.valueOf(procStach.Wq()));
             else
-                wqJLabel.setText("L_q : Error");
+                wqJLabel.setText("W_q : Error");
         } catch (Error e) {
-            wqJLabel.setText("L_q : Error");
+            wqJLabel.setText("W_q : Error");
         }
 
         App.refreshJFrame();
@@ -268,6 +268,6 @@ public class Queue {
         if(procStach.rho() >= 1 && getType() == QueueType.MM1)
             errorMessage.setText(" /!\\ Rho doit être strictement inférieur à 1 /!\\ ");
         else
-            errorMessage.setText(" ");
+            errorMessage.setText("");
     }
 }
