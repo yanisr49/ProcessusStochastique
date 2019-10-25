@@ -37,6 +37,8 @@ public class Queue {
     private JComboBox typeComboBox;
     private JLabel errorMessage;
     private JLabel rhoJLabel;
+    private JLabel PtJLabel;
+    private JTextField PtJTextField;
     private JPanel mm1kJPanel;
     private JPanel mmsJPanel;
 
@@ -107,6 +109,18 @@ public class Queue {
                 setResults();
             }
         });
+        PtJTextField.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyReleased(KeyEvent e) {
+                super.keyReleased(e);
+                try {
+                    procStach.setPt(Double.valueOf(PtJTextField.getText()));
+                } catch (NumberFormatException ee) {
+                    System.out.println(ee);
+                }
+                setResults();
+            }
+        });
         typeComboBox.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
@@ -140,6 +154,8 @@ public class Queue {
                 nbMaxQueueJTextField.setVisible(false);
                 wJLabel.setVisible(true);
                 wqJLabel.setVisible(true);
+                PtJLabel.setVisible(false);
+                PtJTextField.setVisible(false);
                 break;
             case MMS:
                 mm1JPanel.setVisible(true);
@@ -149,6 +165,8 @@ public class Queue {
                 nbMaxQueueJTextField.setVisible(false);
                 wJLabel.setVisible(true);
                 wqJLabel.setVisible(true);
+                PtJLabel.setVisible(true);
+                PtJTextField.setVisible(true);
                 break;
             case MM1K:
                 mm1JPanel.setVisible(true);
@@ -158,6 +176,8 @@ public class Queue {
                 nbMaxQueueJTextField.setVisible(true);
                 wJLabel.setVisible(false);
                 wqJLabel.setVisible(false);
+                PtJLabel.setVisible(false);
+                PtJTextField.setVisible(false);
                 break;
         }
 
@@ -259,6 +279,14 @@ public class Queue {
                 wqJLabel.setText("W_q : Error");
         } catch (Error e) {
             wqJLabel.setText("W_q : Error");
+        }
+        try {
+            if(procStach.Pt() != -1 && !(procStach.Pt() != procStach.Pt()))
+                PtJLabel.setText("P(T > t) : " + String.valueOf(procStach.Pt()));
+            else
+                PtJLabel.setText("P(T > t) : Error");
+        } catch (Error e) {
+            PtJLabel.setText("P(T > t) : Error");
         }
 
         App.refreshJFrame();

@@ -13,6 +13,7 @@ public class ProcStach {
     private double mu = -1;
     private double nbServer = -1;
     private double maxQueue = -1;
+    private double Pt = -1;
 
     private double q_i = -1;
 
@@ -121,6 +122,14 @@ public class ProcStach {
         return -1;
     }
 
+    public double Pt(){
+        if(type == Queue.QueueType.MM1 && q0() != -1){
+            return Math.exp(-mu * Pt)*( 1 +    (  ((q0()*Math.pow(rho()*nbServer,2))/(factorial((int)nbServer)*(1-rho())))  *   ( (1 - (Math.exp(-mu*Pt *(nbServer - 1 - (rho() * nbServer)))))/(nbServer-1-(rho()*nbServer)))  )  );
+        }
+        return -1;
+    }
+
+
     /* Useful methods */
 
     public double rho(){
@@ -185,5 +194,13 @@ public class ProcStach {
 
     public void setType(Queue.QueueType type) {
         this.type = type;
+    }
+
+    public double getPt() {
+        return Pt;
+    }
+
+    public void setPt(double pt) {
+        Pt = pt;
     }
 }
